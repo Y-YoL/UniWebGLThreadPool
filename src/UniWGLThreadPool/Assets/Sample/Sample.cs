@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace Sample
 {
+    using System.Threading.Tasks;
     using YoL.WebGL.Threading;
 
     public class Sample : MonoBehaviour
@@ -11,7 +12,10 @@ namespace Sample
         private Text text;
 
         [SerializeField]
-        private Button button;
+        private Button button1;
+
+        [SerializeField]
+        private Button button2;
 
         private int count;
 
@@ -19,10 +23,11 @@ namespace Sample
 
         private void Awake()
         {
-            this.button.onClick.AddListener(() => this.OnClick());
+            this.button1.onClick.AddListener(() => this.QueueThreadPool());
+            this.button2.onClick.AddListener(() => this.ExecuteAsync());
         }
 
-        public void OnClick()
+        public void QueueThreadPool()
         {
             ThreadPool.QueueUserWorkItem(this.Callback);
         }
@@ -31,6 +36,14 @@ namespace Sample
         {
             this.text.text = $"{this.count}\n{Time.frameCount}";
             this.time = Time.time;
+        }
+
+        private Task ExecuteAsync()
+        {
+            var task = new Task(() => this.Callback(null));
+
+            task.Start(YoL.WebGL.Threading.Tasks.TaskScheduler.Instance);
+            return task;
         }
 
         private void Callback(object state)
