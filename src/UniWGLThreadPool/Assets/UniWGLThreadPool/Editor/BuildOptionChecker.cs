@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 
 namespace YoL.Editor
 {
-    public class AdditionalBuildParameter : IPreprocessBuildWithReport
+    public class BuildOptionChecker : IPreprocessBuildWithReport
     {
         public int callbackOrder => 0;
 
@@ -14,7 +14,7 @@ namespace YoL.Editor
             if (report.summary.platform is BuildTarget.WebGL)
             {
                 Assert.AreEqual(WebGLLinkerTarget.Wasm, PlayerSettings.WebGL.linkerTarget);
-                Assert.IsTrue(PlayerSettings.WebGL.threadsSupport);
+                Assert.IsTrue(PlayerSettings.WebGL.threadsSupport, "PlayerSettings.WebGL.threadsSupport must be enabled");
             }
         }
     }
