@@ -24,6 +24,6 @@ jobs:
       - uses: dotnet/nbgv@master
         with:
           stamp: ${{env.PACKAGE_PATH}}/package.json
-      - run: cd $PACKAGE_PATH && npm publish
+      - run: npm publish ${{env.PACKAGE_PATH}}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,13 +1,14 @@
 {
-  "name": "@y-yol/uniwebglthreadpool",
+  "name": "jp.y-yol.uniwebglthreadpool",
   "version": "1.0.0",
   "displayName": "UniWebGLThreadPool",
   "description": "ThreadPool for WebGL",
   "unity": "2022.3",
   "author": {
-    "name": "YoL"
+    "name": "YoL",
+    "url": "https://github.com/Y-YoL/UniWebGLThreadPool"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/@y-yol"
   }
 }
