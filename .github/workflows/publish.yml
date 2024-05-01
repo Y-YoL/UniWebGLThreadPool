@@ -23,7 +23,9 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
       - uses: dotnet/nbgv@master
         with:
-          stamp: ${{env.PACKAGE_PATH}}/package.json
-      - run: npm publish ${{env.PACKAGE_PATH}}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          stamp: ${{ env.PACKAGE_PATH }}/package.json
+      - run: npm pack ${{ env.PACKAGE_PATH }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: npm-pack
+          path: "*.tgz"
