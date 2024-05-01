@@ -1,0 +1,31 @@
+name: publish
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      PACKAGE_PATH: src/UniWGLThreadPool/Assets/UniWGLThreadPool
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          registry-url: 'https://npm.pkg.github.com'
+      - uses: dotnet/nbgv@master
+        with:
+          stamp: ${{ env.PACKAGE_PATH }}/package.json
+      - run: npm pack ${{ env.PACKAGE_PATH }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: npm-pack
+          path: "*.tgz"
