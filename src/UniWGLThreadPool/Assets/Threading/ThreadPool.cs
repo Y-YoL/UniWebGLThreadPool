@@ -16,6 +16,9 @@ namespace YoL.WebGL.Threading
     using AOT;
 #endif
 
+    /// <summary>
+    /// ThreadPool for WebGL
+    /// </summary>
     public static class ThreadPool
     {
 #if ENABLE_UNIWEBGLTHREADPOOL
@@ -32,6 +35,10 @@ namespace YoL.WebGL.Threading
         }
 #endif
 
+        /// <summary>
+        /// Queues a method for execution. The method executes when a thread pool thread becomes available.
+        /// </summary>
+        /// <param name="callBack">A <see cref="WaitCallback">WaitCallback</see> that represents the method to be executed.</param>
         public static void QueueUserWorkItem(WaitCallback callBack)
         {
 #if ENABLE_UNIWEBGLTHREADPOOL
@@ -42,6 +49,11 @@ namespace YoL.WebGL.Threading
 #endif
         }
 
+        /// <summary>
+        /// Queues a method for execution. The method executes when a thread pool thread becomes available.
+        /// </summary>
+        /// <param name="callBack">A <see cref="WaitCallback">WaitCallback</see> that represents the method to be executed.</param>
+        /// <param name="state">An object containing data to be used by the method.</param>
         public static void QueueUserWorkItem(WaitCallback callBack, object state)
         {
 #if ENABLE_UNIWEBGLTHREADPOOL
