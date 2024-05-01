@@ -1,0 +1,10 @@
+{
+  "name": "yol.uniwebglthreadpool",
+  "version": "1.0.0",
+  "displayName": "UniWebGLThreadPool",
+  "description": "ThreadPool for WebGL",
+  "unity": "2022.3",
+  "author": {
+    "name": "YoL"
+  }
+}

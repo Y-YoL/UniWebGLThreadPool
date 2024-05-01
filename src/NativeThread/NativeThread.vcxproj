@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\UniWGLThreadPool\Assets\ThreadPool\Plugins\NativeThread.cpp" />
+    <ClCompile Include="..\UniWGLThreadPool\Assets\UniWGLThreadPool\Plugins\NativeThread.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

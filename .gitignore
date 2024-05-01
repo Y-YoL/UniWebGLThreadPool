@@ -399,6 +399,7 @@ FodyWeavers.xsd
 
 
 Library
+Temp
 UserSettings
 
 /src/UniWGLThreadPool/*.sln
